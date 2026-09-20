@@ -982,17 +982,17 @@ body {
     z-index: 2;
 }
 /* ==========================================================================
-   Ajustes Exclusivos para Celulares (max-width: 768px)
+   Ajustes Definitivos para Celulares (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
 
-  /* 1. Prevenir scroll horizontal */
+  /* Prevenir desbordamiento horizontal */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
   }
 
-  /* 2. Cabecera y Menú */
+  /* Cabecera y Menú */
   .header {
     padding: 0.5rem 0 !important;
   }
@@ -1002,15 +1002,6 @@ body {
     align-items: center !important;
     gap: 0.5rem !important;
     padding: 0 10px !important;
-  }
-
-  .logo-container {
-    justify-content: center !important;
-    text-align: center !important;
-  }
-
-  .brand-name {
-    font-size: 0.95rem !important;
   }
 
   .nav-links {
@@ -1026,25 +1017,9 @@ body {
   .nav-links li a {
     font-size: 0.85rem !important;
     padding: 4px 6px !important;
-    white-space: nowrap !important;
   }
 
-  /* 3. Sección Hero */
-  .hero {
-    padding: 5rem 1rem 3rem !important;
-    min-height: auto !important;
-  }
-
-  .hero-content h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.3 !important;
-  }
-
-  .hero-content p {
-    font-size: 0.9rem !important;
-  }
-
-  /* 4. Corrección para Tarjetas 3D (Efecto Giro) */
+  /* Contenedores de tarjetas 3D */
   .grid-services {
     display: flex !important;
     flex-direction: column !important;
@@ -1052,10 +1027,8 @@ body {
   }
 
   .flip-card {
-    position: relative !important;
     width: 100% !important;
-    min-height: 560px !important; /* Mantiene la altura estable sin saltos */
-    height: auto !important;
+    height: 580px !important; /* Altura fija para evitar que se desvanezca o salte */
     perspective: 1000px !important;
     margin-bottom: 1rem !important;
   }
@@ -1064,34 +1037,55 @@ body {
     position: relative !important;
     width: 100% !important;
     height: 100% !important;
-    transition: transform 0.8s ease !important;
+    transition: transform 0.6s ease !important;
     transform-style: preserve-3d !important;
   }
 
-  .flip-card-front,
-  .flip-card-back {
-    width: 100% !important;
-    border-radius: 12px !important;
-    overflow: hidden !important; /* Impide que el contenido sobresalga */
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
+  /* Rotación cuando la tarjeta está activa */
+  .flip-card.flipped .flip-card-inner,
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg) !important;
   }
 
+  /* Visibilidad de ambas caras */
+  .flip-card-front,
   .flip-card-back {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
+    width: 100% !important;
     height: 100% !important;
-    transform: rotateY(180deg) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
   }
 
-  /* 5. Contenido dentro del reverso de la tarjeta */
-  .flip-card-back .glass-overlay {
+  .flip-card-front {
+    transform: rotateY(0deg) !important;
+    z-index: 2;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg) !important;
+    z-index: 1;
+    background: #0f172a !important; /* Asegura un fondo oscuro para legibilidad */
+  }
+
+  /* Estilos internos de las tarjetas en celular */
+  .service-card {
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    padding: 1rem !important;
+  }
+
+  .glass-overlay {
+    height: 100% !important;
+    padding: 1.2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
     box-sizing: border-box !important;
   }
 
@@ -1104,38 +1098,30 @@ body {
 
   .mini-logo-card, 
   .topic-card {
-    min-height: 48px !important;
+    min-height: 45px !important;
     padding: 4px !important;
     font-size: 0.75rem !important;
   }
 
-  /* 6. Botón de volver y acciones táctiles */
-  .btn-flip-trigger {
-    z-index: 20 !important;
+  /* Botones de acción dentro de las tarjetas */
+  .btn-flip-trigger, 
+  .btn-flip-back {
     position: relative !important;
+    z-index: 10 !important;
     pointer-events: auto !important;
     cursor: pointer !important;
     width: 100% !important;
     margin-top: 0.5rem !important;
   }
 
-  /* 7. Sección Nosotros y Botón de WhatsApp */
+  /* Ajustes finales de otras secciones */
   .about-container {
     flex-direction: column !important;
     gap: 1.5rem !important;
   }
 
-  .about-content h2 {
-    font-size: 1.5rem !important;
-  }
-
   .whatsapp-btn {
-    padding: 8px 12px !important;
     bottom: 15px !important;
     right: 15px !important;
-  }
-  
-  .whatsapp-text {
-    font-size: 0.8rem !important;
   }
 }
