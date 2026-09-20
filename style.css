@@ -695,7 +695,7 @@ body {
     top: 0;
     width: 120px;
     height: 100%;
-    z-index: 3;
+    z-index: 2;
     pointer-events: none;
 }
 
@@ -711,7 +711,7 @@ body {
 
 .slider-track {
     display: flex;
-    width: calc(220px * 20); 
+    width: calc(220px * 40); 
     animation: scroll 35s linear infinite;
 }
 
@@ -730,47 +730,46 @@ body {
     justify-content: center;
     padding: 12px;
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
-}
-
-.client-logo::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 100%);
-    transition: var(--transition);
-    z-index: 1;
-}
-
-.client-logo:hover::before {
-    background: rgba(232, 125, 30, 0.75);
 }
 
 .client-logo:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
-    border-color: var(--brand-yellow);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--brand-orange);
 }
 
 .logo-img-brand {
     position: relative;
     z-index: 2;
     max-width: 85%;
-    max-height: 65px;
+    max-height: 70px;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
 }
 
+/* La cinta pasante reutiliza exactamente las mismas fotos de cada cliente
+   definidas arriba (.client-cacio, .client-cantina, etc.). */
+.client-logo[class*="client-"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.client-logo[class*="client-"] {
+    background-size: cover;
+    background-position: center;
+}
+
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-220px * 10)); }
+    100% { transform: translateX(calc(-220px * 20)); }
 }
 
 /* ==========================================================================
@@ -863,4 +862,52 @@ body {
     .whatsapp-text { display: none; }
     .whatsapp-btn { padding: 15px; border-radius: 50%; }
     .mini-logos-grid, .mini-services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ==========================================================================
+   CORRECCIÓN DEFINITIVA - FOTOS DE LA CINTA PASANTE
+   Estas reglas deben ir al FINAL para que no sean sobrescritas por
+   .client-logo { background: #FFFFFF; }.
+   Utilizan exactamente las mismas imágenes ya usadas en las tarjetas 180.
+   ========================================================================== */
+
+.client-logo.client-cacio { background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-cantina { background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-central { background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-despensa { background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-frances { background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-elemental { background-image: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-lafama { background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-osaki { background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-puntobaja { background-image: url('https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-sipote { background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-tacos { background-image: url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-ugly { background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-universal { background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-veccina { background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-sorella { background-image: url('https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-newera { background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-northface { background-image: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-steve { background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-masa { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80'); }
+.client-logo.client-vans { background-image: url('https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=400&q=80'); }
+
+.client-logo[class*="client-"] {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.client-logo[class*="client-"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.30) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.client-logo[class*="client-"] .logo-img-brand {
+    position: relative;
+    z-index: 2;
 }
