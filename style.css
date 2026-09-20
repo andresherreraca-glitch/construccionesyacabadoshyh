@@ -1,0 +1,866 @@
+/* ==========================================================================
+   Variables y Estilos Generales
+   ========================================================================== */
+:root {
+    --dark-charcoal: #2C343E;   
+    --brand-orange: #E87D1E;    
+    --brand-red: #D93829;       
+    --brand-yellow: #F4B41A;    
+    --bg-warm-light: #FAF8F5;   
+    --text-dark: #1E242B;
+    --text-muted: #5A6572;
+    --white: #FFFFFF;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --shadow-md: 0 6px 15px rgba(44, 52, 62, 0.08);
+    --shadow-lg: 0 15px 30px rgba(44, 52, 62, 0.15);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-warm-light);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Encabezado / Navegación
+   ========================================================================== */
+.header {
+    background-color: var(--white);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--dark-charcoal);
+    letter-spacing: -0.3px;
+}
+
+.brand-name strong {
+    color: var(--brand-orange);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-charcoal);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--brand-orange);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    background-color: var(--dark-charcoal);
+    color: var(--white);
+    padding: 7rem 0;
+    text-align: center;
+    border-bottom: 5px solid var(--brand-orange);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(44, 52, 62, 0.92) 0%, rgba(26, 32, 38, 0.85) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.badge-exp {
+    display: inline-block;
+    background-color: var(--brand-yellow);
+    color: var(--dark-charcoal);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #E5E7EB;
+    margin-bottom: 2.2rem;
+    font-weight: 300;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.95rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--brand-orange);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(232, 125, 30, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-red);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(217, 56, 41, 0.5);
+}
+
+/* ==========================================================================
+   Sección Servicios
+   ========================================================================== */
+.services-section {
+    padding: 6rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-title h2 {
+    font-family: var(--font-heading);
+    font-size: 2.3rem;
+    color: var(--dark-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.section-title p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.grid-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 220px;
+    background-color: #D1D5DB;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.card-tag {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    padding: 0.4rem 1.2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.tag-corporativo { background-color: var(--dark-charcoal); }
+.tag-residencial { background-color: var(--brand-orange); }
+
+.card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--dark-charcoal);
+    margin-bottom: 0.8rem;
+}
+
+.card-body .description {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--brand-red);
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   TARJETAS GIRATORIAS (FLIP CARDS) Y ROTACIÓN DE 5 SEGUNDOS
+   ========================================================================== */
+.card-action-wrapper {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px dashed #E5E7EB;
+}
+
+.btn-flip-trigger {
+    width: 100%;
+    background: transparent;
+    border: 1.5px solid var(--dark-charcoal);
+    color: var(--dark-charcoal);
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-flip-trigger:hover {
+    background-color: var(--dark-charcoal);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 52, 62, 0.15);
+}
+
+.btn-orange-trigger {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+}
+
+.btn-orange-trigger:hover {
+    background-color: var(--brand-orange);
+    color: var(--white);
+}
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1400px;
+    min-height: 570px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, 
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.flip-card-front {
+    z-index: 2;
+}
+
+.flip-card-back.corp-bg {
+    transform: rotateY(180deg);
+    background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+}
+
+.flip-card-back.res-bg {
+    transform: rotateY(180deg);
+    background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+}
+
+.glass-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 1.8rem;
+    background: rgba(15, 20, 25, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--white);
+}
+
+.back-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--brand-yellow);
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.back-subtitle {
+    font-size: 0.85rem;
+    color: #F3F4F6;
+    text-align: center;
+    margin-top: 4px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.btn-flip-trigger.btn-secondary {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: var(--white);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-flip-trigger.btn-secondary:hover {
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(232, 125, 30, 0.5);
+}
+
+/* ==========================================================================
+   CONTENEDOR ROTATIVO (GRUPOS QUE ROTAN CADA 5 SEGUNDOS)
+   ========================================================================== */
+.rotator-container {
+    position: relative;
+    min-height: 200px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotator-group {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.rotator-group.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Puntos de Indicador (Dots) */
+.rotator-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--brand-yellow);
+    width: 22px;
+    border-radius: 10px;
+}
+
+/* Grilla de Logos/Tarjetas en Reverso */
+.mini-logos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.mini-logo-card {
+    position: relative;
+    height: 72px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: var(--transition);
+}
+
+.mini-logo-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 100%);
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.mini-logo-card:hover::before {
+    background: rgba(232, 125, 30, 0.75);
+}
+
+.mini-logo-card:hover {
+    transform: translateY(-3px) scale(1.04);
+    border-color: var(--brand-yellow);
+}
+
+.mini-logo-card img {
+    position: relative;
+    z-index: 2;
+    max-width: 85%;
+    max-height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+
+/* FONDOS FOTOGRÁFICOS REALISTAS SEGÚN CADA MARCA */
+.client-cacio { background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80'); }
+.client-cantina { background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=400&q=80'); }
+.client-central { background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=80'); }
+.client-despensa { background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80'); }
+.client-frances { background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80'); }
+.client-elemental { background-image: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=400&q=80'); }
+.client-lafama { background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80'); }
+.client-osaki { background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80'); }
+.client-puntobaja { background-image: url('https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80'); }
+.client-sipote { background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80'); }
+.client-tacos { background-image: url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=400&q=80'); }
+.client-ugly { background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80'); }
+.client-universal { background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80'); }
+.client-veccina { background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80'); }
+.client-sorella { background-image: url('https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=400&q=80'); }
+.client-newera { background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80'); }
+.client-northface { background-image: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=400&q=80'); }
+.client-steve { background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80'); }
+.client-masa { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80'); }
+.client-vans { background-image: url('https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=400&q=80'); }
+
+/* Grilla de Temas Residenciales */
+.mini-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.topic-card {
+    position: relative;
+    height: 72px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: var(--transition);
+}
+
+.topic-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 100%);
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.topic-card:hover::before {
+    background: rgba(232, 125, 30, 0.75);
+}
+
+.topic-card:hover {
+    transform: translateY(-3px) scale(1.03);
+    border-color: var(--brand-yellow);
+}
+
+.topic-card span {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+    line-height: 1.1;
+}
+
+/* Fondos para Tarjetas de Especialidades */
+.topic-cocinas { background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80'); }
+.topic-banos { background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80'); }
+.topic-drywall { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80'); }
+.topic-pisos { background-image: url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=400&q=80'); }
+.topic-pintura { background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80'); }
+.topic-iluminacion { background-image: url('https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=400&q=80'); }
+.topic-carpinteria { background-image: url('https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=400&q=80'); }
+.topic-ampliaciones { background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80'); }
+.topic-impermeabilizacion { background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80'); }
+.topic-cubiertas { background-image: url('https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=400&q=80'); }
+.topic-aluminio { background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=400&q=80'); }
+.topic-fachadas { background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80'); }
+.topic-plomeria { background-image: url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=400&q=80'); }
+.topic-electricidad { background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=400&q=80'); }
+.topic-estuco { background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=400&q=80'); }
+.topic-mantenimiento { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=400&q=80'); }
+
+/* ==========================================================================
+   Sección Nosotros
+   ========================================================================== */
+.about-section {
+    background-color: #F4F1EA;
+    padding: 5rem 0;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    height: 350px;
+    background-color: #D1D5DB;
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-content h2 {
+    font-family: var(--font-heading);
+    color: var(--dark-charcoal);
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.about-content p {
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Sección Clientes / Carrusel Infinito
+   ========================================================================== */
+.clients-section {
+    padding: 4rem 0 5rem 0;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+.slider-track-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.slider-track-container::before,
+.slider-track-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.slider-track-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--white), rgba(255,255,255,0));
+}
+
+.slider-track-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--white), rgba(255,255,255,0));
+}
+
+.slider-track {
+    display: flex;
+    width: calc(220px * 20); 
+    animation: scroll 35s linear infinite;
+}
+
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+.client-logo {
+    position: relative;
+    width: 190px;
+    height: 110px;
+    margin: 0 15px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    transition: var(--transition);
+}
+
+.client-logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 100%);
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.client-logo:hover::before {
+    background: rgba(232, 125, 30, 0.75);
+}
+
+.client-logo:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    border-color: var(--brand-yellow);
+}
+
+.logo-img-brand {
+    position: relative;
+    z-index: 2;
+    max-width: 85%;
+    max-height: 65px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-220px * 10)); }
+}
+
+/* ==========================================================================
+   Pie de Página / Footer
+   ========================================================================== */
+.footer {
+    background-color: var(--dark-charcoal);
+    color: var(--white);
+    padding: 4rem 0 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+}
+
+.footer-quote {
+    max-width: 700px;
+    border-top: 1px solid #4B5563;
+    border-bottom: 1px solid #4B5563;
+    padding: 1.5rem 0;
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #E5E7EB;
+    line-height: 1.7;
+}
+
+.footer-bottom {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #9CA3AF;
+}
+
+/* ==========================================================================
+   Botón Flotante de WhatsApp
+   ========================================================================== */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 2000;
+    transition: var(--transition);
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.05);
+}
+
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.whatsapp-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 868px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .hero h1 { font-size: 2.1rem; }
+    .about-container { grid-template-columns: 1fr; }
+    .about-image-wrapper { height: 250px; }
+    .whatsapp-text { display: none; }
+    .whatsapp-btn { padding: 15px; border-radius: 50%; }
+    .mini-logos-grid, .mini-services-grid { grid-template-columns: repeat(2, 1fr); }
+}
