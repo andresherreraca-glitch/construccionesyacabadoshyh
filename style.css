@@ -101,87 +101,157 @@ body {
 }
 
 /* ==========================================================================
-   Hero Section
+   Hero Section & Slider 100% CSS (Sin JavaScript)
    ========================================================================== */
 .hero {
     position: relative;
-    background: url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    background-color: var(--dark-charcoal);
     color: var(--white);
-    padding: 7rem 0;
+    padding: 9rem 0;
     text-align: center;
     border-bottom: 5px solid var(--brand-orange);
+    overflow: hidden;
+    background-color: var(--dark-charcoal);
 }
 
+/* Contenedor del slider */
+.hero-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Configuración básica de las capas de imagen */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    /* Duración total del ciclo: 30s (10s por cada una de las 3 imágenes) */
+    animation: slideAnimation 30s infinite ease-in-out;
+}
+
+/* Asignación de las 3 imágenes en alta calidad */
+.slide-1 {
+    background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+    animation-delay: 0s;
+}
+
+.slide-2 {
+    background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80');
+    animation-delay: 10s;
+}
+
+.slide-3 {
+    background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1920&q=80');
+    animation-delay: 20s;
+}
+
+/* Animación ajustada para intercalar exactamente 3 capas de imagen */
+@keyframes slideAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+    3% {
+        opacity: 1; /* Transición suave de entrada */
+    }
+    33.33% {
+        opacity: 1; /* Permanece visible */
+        transform: scale(1);
+    }
+    36.33% {
+        opacity: 0; /* Transición suave de salida */
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* Animación pura CSS para alternar imágenes exactamente cada 10 segundos */
+@keyframes slideAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    5% {
+        opacity: 1; /* Transición suave de entrada */
+    }
+    33.33% {
+        opacity: 1; /* Se mantiene visible durante sus 10s */
+        transform: scale(1);
+    }
+    38.33% {
+        opacity: 0; /* Transición suave de salida */
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Filtro ligero sobre la imagen viva para asegurar contraste */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(44, 52, 62, 0.92) 0%, rgba(26, 32, 38, 0.85) 100%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(20, 24, 30, 0.6) 100%);
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 850px;
+    max-width: 880px;
 }
 
-.badge-exp {
-    display: inline-block;
-    background-color: var(--brand-yellow);
-    color: var(--dark-charcoal);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.4rem 1.2rem;
-    border-radius: 20px;
-    margin-bottom: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
+/* Texto sobre la imagen: nítido y legible */
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.25;
     margin-bottom: 1.2rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    color: #FFFFFF;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: #E5E7EB;
+    color: #F9FAFB;
     margin-bottom: 2.2rem;
-    font-weight: 300;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
-.btn {
+/* Estilo Profesional para el Botón del Hero */
+.btn-hero {
     display: inline-block;
-    padding: 0.95rem 2.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    transition: var(--transition);
-}
-
-.btn-primary {
     background-color: var(--brand-orange);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(232, 125, 30, 0.4);
+    color: var(--white) !important; /* Fuerza texto blanco sobre fondo naranja */
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(232, 125, 30, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    border: none;
 }
 
-.btn-primary:hover {
+.btn-hero:hover {
     background-color: var(--brand-red);
+    color: var(--white) !important;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(217, 56, 41, 0.5);
+    box-shadow: 0 6px 22px rgba(217, 56, 41, 0.6);
 }
-
 /* ==========================================================================
    Sección Servicios
    ========================================================================== */
