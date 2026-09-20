@@ -982,17 +982,16 @@ body {
     z-index: 2;
 }
 /* ==========================================================================
-   Ajustes para Celulares: Tarjetas Estáticas (Sin giro 3D)
+   Ajustes para Celulares: Tarjetas Estáticas y Legibles
    ========================================================================== */
 @media (max-width: 768px) {
 
-  /* 1. Prevenir desbordamiento horizontal */
+  /* 1. Evitar desbordamientos generales */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
   }
 
-  /* 2. Cabecera y Menú */
   .header {
     padding: 0.5rem 0 !important;
   }
@@ -1019,7 +1018,7 @@ body {
     padding: 4px 6px !important;
   }
 
-  /* 3. Desactivar efecto 3D en la rejilla de tarjetas */
+  /* 2. Estructura de las tarjetas de servicio */
   .grid-services {
     display: flex !important;
     flex-direction: column !important;
@@ -1031,6 +1030,7 @@ body {
     min-height: auto !important;
     perspective: none !important;
     background: transparent !important;
+    margin-bottom: 1rem !important;
   }
 
   .flip-card-inner {
@@ -1039,10 +1039,8 @@ body {
     gap: 1.5rem !important;
     transform: none !important;
     transition: none !important;
-    transform-style: flat !important;
   }
 
-  /* 4. Mostrar Cara Frontal y Cara Posterior una debajo de la otra */
   .flip-card-front,
   .flip-card-back {
     position: relative !important;
@@ -1054,13 +1052,26 @@ body {
     backface-visibility: visible !important;
     -webkit-backface-visibility: visible !important;
     border-radius: 16px !important;
-    overflow: hidden !important;
+    box-sizing: border-box !important;
   }
 
-  /* Estilos específicos de la cara trasera */
+  /* 3. Corrección del diseño dentro de la tarjeta posterior (oscura) */
   .flip-card-back {
-    background-color: #0f172a !important; /* Fondo oscuro sólido */
-    padding: 1.5rem 1rem !important;
+    background-color: #0f172a !important;
+    padding: 1.5rem 1rem 2.5rem 1rem !important; /* Espacio extra abajo para los puntos */
+  }
+
+  .flip-card-back h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.4rem !important;
+    text-align: center !important;
+  }
+
+  .flip-card-back p {
+    font-size: 0.85rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1.2rem !important; /* Separa el texto de la cuadrícula de botones */
+    text-align: center !important;
   }
 
   .flip-card-back .glass-overlay {
@@ -1068,36 +1079,49 @@ body {
     padding: 0 !important;
   }
 
-  /* 5. Ajuste de las cuadrículas internas */
+  /* 4. Ajuste de los botones/cuadrículas internas para que no se salgan ni amontonen */
   .mini-logos-grid, 
   .mini-services-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
+    gap: 0.6rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
     margin: 1rem 0 !important;
   }
 
   .mini-logo-card, 
   .topic-card {
-    min-height: 45px !important;
-    padding: 6px !important;
-    font-size: 0.75rem !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px !important;
+    min-height: 48px !important;
+    padding: 8px 6px !important;
+    font-size: 0.78rem !important;
+    line-height: 1.1 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 10px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
+    word-break: break-word !important;
   }
 
-  /* 6. Ocultar botones de "Girar" o "Volver" ya que la información es continua */
+  /* 5. Acomodar los puntos del carrusel para que no tapen el texto */
+  .slick-dots,
+  .carousel-dots {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 1rem !important;
+    z-index: 5 !important;
+  }
+
+  /* Ocultar botones residuales de giro */
   .btn-flip-trigger, 
-  .btn-flip-back,
-  .flip-card button {
+  .btn-flip-back {
     display: none !important;
   }
 
-  /* 7. Ajustes finales de otras secciones */
+  /* 6. Ajustes finales */
   .about-container {
     flex-direction: column !important;
     gap: 1.5rem !important;
