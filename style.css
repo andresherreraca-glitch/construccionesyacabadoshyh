@@ -113,7 +113,6 @@ body {
     background-color: var(--dark-charcoal);
 }
 
-/* Contenedor del slider */
 .hero-slides {
     position: absolute;
     top: 0;
@@ -123,7 +122,6 @@ body {
     z-index: 0;
 }
 
-/* Configuración básica de las capas de imagen */
 .hero-slide {
     position: absolute;
     top: 0;
@@ -133,11 +131,9 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    /* Duración total del ciclo: 30s (10s por cada una de las 3 imágenes) */
     animation: slideAnimation 30s infinite ease-in-out;
 }
 
-/* Asignación de las 3 imágenes en alta calidad */
 .slide-1 {
     background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
     animation-delay: 0s;
@@ -153,48 +149,26 @@ body {
     animation-delay: 20s;
 }
 
-/* Animación ajustada para intercalar exactamente 3 capas de imagen */
-@keyframes slideAnimation {
-    0% {
-        opacity: 0;
-        transform: scale(1.04);
-    }
-    3% {
-        opacity: 1; /* Transición suave de entrada */
-    }
-    33.33% {
-        opacity: 1; /* Permanece visible */
-        transform: scale(1);
-    }
-    36.33% {
-        opacity: 0; /* Transición suave de salida */
-    }
-    100% {
-        opacity: 0;
-    }
-}
-/* Animación pura CSS para alternar imágenes exactamente cada 10 segundos */
 @keyframes slideAnimation {
     0% {
         opacity: 0;
         transform: scale(1.05);
     }
     5% {
-        opacity: 1; /* Transición suave de entrada */
+        opacity: 1;
     }
     33.33% {
-        opacity: 1; /* Se mantiene visible durante sus 10s */
+        opacity: 1;
         transform: scale(1);
     }
     38.33% {
-        opacity: 0; /* Transición suave de salida */
+        opacity: 0;
     }
     100% {
         opacity: 0;
     }
 }
 
-/* Filtro ligero sobre la imagen viva para asegurar contraste */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -211,7 +185,6 @@ body {
     max-width: 880px;
 }
 
-/* Texto sobre la imagen: nítido y legible */
 .hero h1 {
     font-family: var(--font-heading);
     font-size: 3.2rem;
@@ -230,11 +203,10 @@ body {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
-/* Estilo Profesional para el Botón del Hero */
 .btn-hero {
     display: inline-block;
     background-color: var(--brand-orange);
-    color: var(--white) !important; /* Fuerza texto blanco sobre fondo naranja */
+    color: var(--white) !important;
     font-family: var(--font-heading);
     font-size: 1.05rem;
     font-weight: 700;
@@ -252,6 +224,7 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 6px 22px rgba(217, 56, 41, 0.6);
 }
+
 /* ==========================================================================
    Sección Servicios
    ========================================================================== */
@@ -367,7 +340,7 @@ body {
 }
 
 /* ==========================================================================
-   TARJETAS GIRATORIAS (FLIP CARDS) Y ROTACIÓN DE 5 SEGUNDOS
+   TARJETAS GIRATORIAS (FLIP CARDS)
    ========================================================================== */
 .card-action-wrapper {
     margin-top: auto;
@@ -498,7 +471,7 @@ body {
 }
 
 /* ==========================================================================
-   CONTENEDOR ROTATIVO (GRUPOS QUE ROTAN CADA 5 SEGUNDOS)
+   CONTENEDOR ROTATIVO
    ========================================================================== */
 .rotator-container {
     position: relative;
@@ -526,7 +499,6 @@ body {
     pointer-events: auto;
 }
 
-/* Puntos de Indicador (Dots) */
 .rotator-dots {
     display: flex;
     justify-content: center;
@@ -548,7 +520,6 @@ body {
     border-radius: 10px;
 }
 
-/* Grilla de Logos/Tarjetas en Reverso */
 .mini-logos-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -602,7 +573,7 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
 }
 
-/* FONDOS FOTOGRÁFICOS REALISTAS SEGÚN CADA MARCA */
+/* Fondos Marcas */
 .client-cacio { background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80'); }
 .client-cantina { background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=400&q=80'); }
 .client-central { background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=80'); }
@@ -821,8 +792,6 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
 }
 
-/* La cinta pasante reutiliza exactamente las mismas fotos de cada cliente
-   definidas arriba (.client-cacio, .client-cantina, etc.). */
 .client-logo[class*="client-"]::before {
     content: "";
     position: absolute;
@@ -920,7 +889,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Responsive */
+/* Responsive Tablet */
 @media (max-width: 868px) {
     .navbar {
         flex-direction: column;
@@ -935,12 +904,8 @@ body {
 }
 
 /* ==========================================================================
-   CORRECCIÓN DEFINITIVA - FOTOS DE LA CINTA PASANTE
-   Estas reglas deben ir al FINAL para que no sean sobrescritas por
-   .client-logo { background: #FFFFFF; }.
-   Utilizan exactamente las mismas imágenes ya usadas en las tarjetas 180.
+   Fotos de la Cinta Pasante
    ========================================================================== */
-
 .client-logo.client-cacio { background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80'); }
 .client-logo.client-cantina { background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=400&q=80'); }
 .client-logo.client-central { background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=80'); }
@@ -980,4 +945,108 @@ body {
 .client-logo[class*="client-"] .logo-img-brand {
     position: relative;
     z-index: 2;
+}
+
+/* ==========================================================================
+   Ajustes Móviles con Fix de Renderizado 3D (Sin pantalla blanca)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* 1. Control de desbordamiento global */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* 2. Menú de Navegación */
+  .header {
+    padding: 0.5rem 0 !important;
+  }
+
+  .navbar {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0 10px !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px 12px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  .nav-links li a {
+    font-size: 0.85rem !important;
+    padding: 4px 6px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 3. Tarjetas y Giro 3D NATIVO (Fix de Pantalla Blanca) */
+  .grid-services {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+
+  .flip-card {
+    position: relative !important;
+    width: 100% !important;
+    height: 540px !important;
+    perspective: 1000px !important;
+    -webkit-perspective: 1000px !important;
+  }
+
+  .flip-card-inner {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform-style: preserve-3d !important;
+    -webkit-transform-style: preserve-3d !important;
+  }
+
+  /* Disparador de giro al tocar/presionar la tarjeta */
+  .flip-card:hover .flip-card-inner,
+  .flip-card:focus-within .flip-card-inner,
+  .flip-card:active .flip-card-inner {
+    transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
+  }
+
+  /* Evita la pantalla blanca ocultando las caras opuestas */
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    
+    /* Fix para aceleración por hardware en móviles */
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+  }
+
+  .flip-card-front {
+    transform: rotateY(0deg) !important;
+    -webkit-transform: rotateY(0deg) !important;
+    z-index: 2;
+  }
+
+  /* Cara posterior con fondo oscuro explícito */
+  .flip-card-back {
+    transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
+    background-color: #0b1329 !important;
+    z-index: 1;
+  }
 }
