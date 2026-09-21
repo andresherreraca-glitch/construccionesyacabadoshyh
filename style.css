@@ -982,11 +982,11 @@ body {
     z-index: 2;
 }
 /* ==========================================================================
-   Ajustes para Celulares (max-width: 768px)
+   Ajustes Iniciales Móviles (Efecto 3D CSS nativo - Sin JS)
    ========================================================================== */
 @media (max-width: 768px) {
 
-  /* 1. Control para evitar scroll horizontal */
+  /* 1. Control de desbordamiento horizontal */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -1004,6 +1004,15 @@ body {
     padding: 0 10px !important;
   }
 
+  .logo-container {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .brand-name {
+    font-size: 0.95rem !important;
+  }
+
   .nav-links {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -1017,9 +1026,10 @@ body {
   .nav-links li a {
     font-size: 0.85rem !important;
     padding: 4px 6px !important;
+    white-space: nowrap !important;
   }
 
-  /* 3. Hero / Encabezado principal */
+  /* 3. Hero / Encabezado */
   .hero {
     padding: 5rem 1rem 3rem !important;
     min-height: auto !important;
@@ -1034,7 +1044,7 @@ body {
     font-size: 0.9rem !important;
   }
 
-  /* 4. Tarjetas 3D y Contenedores */
+  /* 4. Estructura y Giro 3D nativo */
   .grid-services {
     display: flex !important;
     flex-direction: column !important;
@@ -1044,35 +1054,63 @@ body {
   .flip-card {
     position: relative !important;
     width: 100% !important;
-    min-height: 520px !important;
-    height: auto !important;
+    height: 520px !important; /* Altura base para mantener la tarjeta enmarcada */
+    perspective: 1000px !important;
+    margin-bottom: 1rem !important;
   }
 
   .flip-card-inner {
     position: relative !important;
     width: 100% !important;
     height: 100% !important;
+    transition: transform 0.8s ease !important;
+    transform-style: preserve-3d !important;
+  }
+
+  /* Rotación 3D pura en CSS al hacer toque/hover */
+  .flip-card:hover .flip-card-inner,
+  .flip-card:focus-within .flip-card-inner,
+  .flip-card:active .flip-card-inner {
+    transform: rotateY(180deg) !important;
   }
 
   .flip-card-front,
   .flip-card-back {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
+    height: 100% !important;
     border-radius: 16px !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
   }
 
-  /* 5. Ajuste para que las imágenes y logos no se recorten */
+  .flip-card-front {
+    transform: rotateY(0deg) !important;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg) !important;
+  }
+
+  /* 5. Asegurar visibilidad completa de logos e imágenes */
   .mini-logos-grid img,
   .mini-logo-card img,
   .carousel-item img {
     max-width: 100% !important;
     height: auto !important;
-    object-fit: contain !important; /* Mantiene la proporción de logos e imágenes completas */
+    object-fit: contain !important;
   }
 
-  /* 6. Otros elementos generales */
+  /* 6. Nos y WhatsApp */
   .about-container {
     flex-direction: column !important;
     gap: 1.5rem !important;
+  }
+
+  .about-content h2 {
+    font-size: 1.5rem !important;
   }
 
   .whatsapp-btn {
@@ -1084,4 +1122,4 @@ body {
   .whatsapp-text {
     font-size: 0.8rem !important;
   }
-}
+}   
